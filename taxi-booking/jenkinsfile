@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage('checkout'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Nagarajuchini/Devops-projects.git']])
+            }
+        }
+        stage('Build'){
+            steps{
+                sh "mvn package"
+            }
+        }
+        stage('Deploy to tomcat'){
+            steps{
+                deploy adapters: [tomcat9(credentialsId: '750c40d51725d45ec1e005a16aea86639498ef28', path: '', url: 'http://3.137.216.135:8080/')], contextPath: 'goutham', war: '**/*.war'
+            }
+        }
+    }
+}
