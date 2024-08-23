@@ -1,5 +1,5 @@
 FROM python:3.6
-MAINTAINER Ashok Bollepalli "ashokitschool@gmail.com"
+MAINTAINER Nagaraju Yellugalla "ykeshava16@gmail.com"
 COPY . /app
 WORKDIR /app
 EXPOSE 5000
